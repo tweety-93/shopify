@@ -94,7 +94,7 @@ function Home() {
                   </button>
                   <button
                     className={`btn ms-4 ${
-                      isProductSaved(product.id) ? "btn-danger" : "btn-success"
+                      isProductSaved(product.id) ? "btn-warning" : "btn-success"
                     }`}
                     onClick={() => saveHandler(product)}
                   >
