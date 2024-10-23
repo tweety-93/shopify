@@ -7,8 +7,16 @@ dotenv.config();
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
+const allowedOrigins = process.env.ALLOWED_ORIGINS.split(",");
 
-app.use(cors({ origin: process.env.CLIENT_URL }));
+
+app.use(
+  cors({
+    origin: allowedOrigins,
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  })
+);
 app.use(express.json());
 
 app.post("/api/create-checkout-sessions", async (req, res) => {
