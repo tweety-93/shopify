@@ -35,11 +35,14 @@ function CheckOut() {
   const headers={
     "Content-Type":"application/json"
    }
-  const response = await fetch("http://localhost:4000/api/create-checkout-sessions",{
-    method: "POST",
-    headers: headers,
-    body: JSON.stringify(body)
-  });
+  const response = await fetch(
+    "https://shopify-backend-xu0n.onrender.com/api/create-checkout-sessions",
+    {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify(body),
+    }
+  );
     const session=await response.json();
     const result = await stripe.redirectToCheckout({ sessionId: session.id });
       if (result.error) {
